@@ -3,6 +3,17 @@
 #include "./user/user.h"
 int main ()
 {
-   // some stuff here
+    int tries =3 ;
+   whiel(1)
+   {
+       if(login())
+         break ;
+       else
+         tries-- ;
+
+      if (!tries)
+        return 0 ; 
+
+   }
     return 0;
 }
