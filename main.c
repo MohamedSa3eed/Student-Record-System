@@ -4,7 +4,7 @@
 int main ()
 {
   int mode ;
-  mode = Mode();
+  mode = Mode();   //0 for admin 1 for user 
   if (mode)
   { 
     UserLogin();
