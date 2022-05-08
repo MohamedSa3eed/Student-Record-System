@@ -3,8 +3,10 @@
 #include "./user/user.h"
 int main ()
 {
-   int x;
-   x =5;
-    printf("%d",x);
+<<<<<<< HEAD
+
+=======
+   // some stuff here
+>>>>>>> master
     return 0;
 }

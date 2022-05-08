@@ -1,5 +1,5 @@
-#ifndef ADMIN
-#define ADMIN
+#ifndef ADMIN.H
+#define ADMIN.H
 
 
 #endif
