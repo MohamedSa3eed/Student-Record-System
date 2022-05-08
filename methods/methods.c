@@ -10,7 +10,3 @@ int x ;
 scanf("%d",&x);
 return x ;
 }
-int Login () 
-{
-    
-}
