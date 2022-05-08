@@ -3,17 +3,39 @@
 #include "./user/user.h"
 int main ()
 {
-    int tries =3 ;
+  int mode ;
+  mode = Mode();
+  if (mode)
+  { 
+    UserLogin();
+    DisplayUserOptions();
+  }
+  else
+  { 
+    AdminLogin();
+    DisplayAdminOptions();
+  }
+  
+  /*
+  ask user for user_name and password (3 tries) see help function :
+  */ 
+ 
+  /*
+   int tries =3 ;
+
    whiel(1)
    {
-       if(login())
+       if(Login())
          break ;
        else
          tries-- ;
 
       if (!tries)
-        return 0 ; 
-
+      {
+        printf("you ran out of tries");
+        return 0 ;
+      } 
    }
+   */
     return 0;
 }
