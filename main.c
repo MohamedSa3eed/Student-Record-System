@@ -4,9 +4,7 @@
 #include "./methods/methods.h"
 int main ()
 {
-<<<<<<< HEAD
 
-=======
   int mode ;
   mode = Mode();
   if (mode)
@@ -41,6 +39,5 @@ int main ()
       } 
    }
    */
->>>>>>> master
     return 0;
 }
