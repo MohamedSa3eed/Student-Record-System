@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "./admin/admin.h"
 #include "./user/user.h"
+#include "./methods/methods.h"
 int main ()
 {
   int mode ;

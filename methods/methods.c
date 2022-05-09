@@ -1,4 +1,6 @@
 #include "methods.h"
+#include "../admin/admin.h"
+#include "../user/user.h"
 #include"stdio.h"
 int Mode()
 {
