@@ -9,13 +9,22 @@ int main ()
   mode = Mode();
   if (mode)
   {
-    UserLogin();
-    DisplayUserOptions();
+      if( UserLogin())
+      {
+          DisplayUserOptions();
+      }
+      else return 0;
+
   }
   else
   {
-    AdminLogin();
-    DisplayAdminOptions();
+   if( AdminLogin())
+   {
+
+       DisplayAdminOptions();
+   }
+   else return 0;
+
   }
 
   /*

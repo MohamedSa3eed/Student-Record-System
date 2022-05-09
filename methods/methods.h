@@ -1,5 +1,5 @@
-#ifndef METHODS.H
-#define METHODS.H
+#ifndef METHODS_H
+#define METHODS_H
 
 int  Mode();
 int  AdminLogin();
