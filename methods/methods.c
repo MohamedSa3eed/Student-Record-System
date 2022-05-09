@@ -1,7 +1,23 @@
 #include "methods.h"
+#include "../admin/admin.h"
+#include "../user/user.h"
 #include"stdio.h"
 #include <string.h>
+int Mode()
+{
+    while (1)
+    {
+        printf("Welcome to SCS \n--------------------------------------\n 0 for admin mode \n 1 for user mode \n");
+        int x ;
+        scanf("%d",&x);
+        if(x == 0 || x== 1)
+        {
+            return x ;
 
+        } else printf("please enter a valid number\n");
+
+    }
+}
 
 
 int AdminLogin()
@@ -34,6 +50,8 @@ int AdminLogin()
     return 1;
 }
 
+
+
 int  UserLogin()
 {
     int tries = 5;
@@ -60,16 +78,18 @@ int  UserLogin()
             printf("The ID or the password are wrong\n");
             tries-- ;
         }
+            }
 
         if (!tries)
         {
             printf("you ran out of tries");
             return 0 ;
         }
-    }
-    return 1;
 
-}
+    return 1;
+        }
+
+
 void DisplayUserOptions()
 {
     printf("stuff");
@@ -77,5 +97,8 @@ void DisplayUserOptions()
 
 void DisplayAdminOptions()
 {
+
     printf("stuff");
+
+
 }

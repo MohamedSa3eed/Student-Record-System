@@ -31,4 +31,26 @@ int main ()
     }
 
 
-  }
+
+
+  /*
+  ask user for user_name and password (3 tries) see help function :
+  */
+
+  /*
+   int tries =3 ;
+   whiel(1)
+   {
+       if(Login())
+         break ;
+       else
+         tries-- ;
+      if (!tries)
+      {
+        printf("you ran out of tries");
+        return 0 ;
+      } 
+   }
+   */
+    return 0;
+}
