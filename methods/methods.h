@@ -1,3 +1,5 @@
+#include "../admin/admin.h"
+#include "../user/user.h"
 #ifndef METHODS.H
 #define METHODS.H
 

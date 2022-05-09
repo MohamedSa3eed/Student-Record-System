@@ -19,5 +19,8 @@ typedef struct Student
    
 } Student ;
 
+void ViewRecord ();
+void EditPassword () ;
+void EditName() ;
 
 #endif
