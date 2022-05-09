@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "../user/user.h"
-#ifndef ADMIN.H
-#define ADMIN.H
+#ifndef ADMIN_H
+#define ADMIN_H
 
 int adminPassword ;
 
