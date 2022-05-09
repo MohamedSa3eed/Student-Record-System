@@ -2,16 +2,7 @@
 #include"stdio.h"
 #include <string.h>
 
-int Mode()
-{
-  printf("Welcome to SCS \n \
---------------------------------------\n \
-0 for admin mode \n \
-1 for user mode \n");
-int x ;
-scanf("%d",&x);
-return x ;
-}
+
 
 int AdminLogin()
 {
@@ -68,7 +59,7 @@ int  UserLogin()
         {
             printf("The ID or the password are wrong\n");
             tries-- ;
-            }
+        }
 
         if (!tries)
         {
@@ -77,6 +68,7 @@ int  UserLogin()
         }
     }
     return 1;
+
 }
 void DisplayUserOptions()
 {
@@ -85,5 +77,5 @@ void DisplayUserOptions()
 
 void DisplayAdminOptions()
 {
-printf("stuff");
+    printf("stuff");
 }
