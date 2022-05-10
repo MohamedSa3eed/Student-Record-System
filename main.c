@@ -5,30 +5,33 @@
 int main ()
 {
 
-     int mode = Mode();
+while (1)
+{
+    int mode = Mode();
     if (mode)
     {
-        UserLogin();
-        DisplayUserOptions();
-        if( UserLogin())
-        {
+//        UserLogin();
+//        DisplayUserOptions();
+        if( UserLogin()) //returns 0 to terminate if user fails to log in too many times
+            {
             DisplayUserOptions();
-        }
+            }
         else return 0;
 
     }
     else
     {
-        AdminLogin();
-        DisplayAdminOptions();
-        if( AdminLogin())
-        {
+//        AdminLogin();
+//        DisplayAdminOptions();
+        if( AdminLogin()) //returns 0 to terminate if admin fails to log in too many times
+            {
 
             DisplayAdminOptions();
-        }
+            }
         else return 0;
 
     }
+}
 
 
 
