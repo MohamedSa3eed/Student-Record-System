@@ -5,8 +5,8 @@
 #define METHODS_H
 
 int  Mode();
-int  AdminLogin();
-int  UserLogin();
+int  AdminLogin(int tries_);
+int  UserLogin(int tries_);
 void DisplayUserOptions();
 void DisplayAdminOptions();
 

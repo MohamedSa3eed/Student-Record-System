@@ -2,6 +2,7 @@
 #include "./admin/admin.h"
 #include "./user/user.h"
 #include "./methods/methods.h"
+#define tries 5
 int main ()
 {
 
@@ -12,7 +13,7 @@ while (1)
     {
 //        UserLogin();
 //        DisplayUserOptions();
-        if( UserLogin()) //returns 0 to terminate if user fails to log in too many times
+        if( UserLogin(tries)) //returns 0 to terminate if user fails to log in too many times
             {
             DisplayUserOptions();
             }
@@ -23,7 +24,7 @@ while (1)
     {
 //        AdminLogin();
 //        DisplayAdminOptions();
-        if( AdminLogin()) //returns 0 to terminate if admin fails to log in too many times
+        if( AdminLogin(tries)) //returns 0 to terminate if admin fails to log in too many times
             {
 
             DisplayAdminOptions();

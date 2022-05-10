@@ -18,9 +18,9 @@ int Mode()
 
     }
 }
-int AdminLogin()
+int AdminLogin(int tries_)
 {
-    int tries = 5;
+    int tries = tries_;
 
     while(1)
     {
@@ -50,12 +50,11 @@ int AdminLogin()
 
 
 
-int  UserLogin()
+int UserLogin(int tries_)
 {
-    int tries = 5;
+    int tries = tries_;
     while(1)
     {
-
 
         const char *saved_user_ID = "123"; //temp save
         const char *saved_user_password = "magicpassword"; //temp save
@@ -76,13 +75,14 @@ int  UserLogin()
             printf("The ID or the password are wrong\n");
             tries-- ;
         }
-            }
-
         if (!tries)
         {
             printf("you ran out of tries");
             return 0 ;
         }
+            }
+
+
 
     return 1;
         }
