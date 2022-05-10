@@ -3,7 +3,7 @@
 #ifndef ADMIN_H
 #define ADMIN_H
 
-int adminPassword ;
+//int adminPassword ;
 
 void AddStudentRecord () ;
 void RemoveStudentRecord () ;

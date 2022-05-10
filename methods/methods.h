@@ -9,5 +9,5 @@ int  AdminLogin(int tries_);
 int  UserLogin(int tries_);
 void DisplayUserOptions();
 void DisplayAdminOptions();
-
+void CreateStudentList (Student *);
 #endif

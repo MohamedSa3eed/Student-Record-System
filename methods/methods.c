@@ -167,3 +167,8 @@ void DisplayUserOptions()
 
     }
 }
+
+void CreateStudentList (Student *ps)
+{
+   ps->top=NULL ;
+}
