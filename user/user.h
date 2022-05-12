@@ -6,7 +6,7 @@ typedef struct StudentNode
 {
    int id ;
    char name [50] ;
-   int password ;
+   char password [10];
    int score ;
    struct StudentNode *next ;
 

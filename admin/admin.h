@@ -5,11 +5,11 @@
 
 //int adminPassword ;
 
-void AddStudentRecord () ;
-void RemoveStudentRecord () ;
-void ViewStudentRecord () ;
-void ViewAllRecords () ;
-void EditAdminPassword () ;
-void EditStudentGrade () ;
+void AddStudentRecord (Student *) ; //done
+void RemoveStudentRecord (Student *) ; //still
+void ViewStudentRecord (Student *) ; //done
+void ViewAllRecords (Student *) ; //done
+void EditAdminPassword () ; //still 
+void EditStudentGrade (Student *) ; //done 
 
 #endif
