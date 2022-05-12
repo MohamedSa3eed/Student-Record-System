@@ -50,7 +50,6 @@ int AdminLogin(int tries_)
 }
 
 
-
 int UserLogin(int tries_)
 {
     int tries = tries_;
