@@ -4,7 +4,7 @@
 
     // please someone do the UI for this :)
 
-    void AddStudent (Student *ps)
+    void AddStudentRecord (Student *ps)
 {
     while (1)
     {
