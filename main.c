@@ -8,8 +8,8 @@
 
 int main ()
 {
-  Student S ;
-  CreateStudentList(&S);
+  //Student S ;
+  //CreateStudentList(&S);
 while (1)
 {
     int mode = Mode();

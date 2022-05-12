@@ -88,6 +88,8 @@ int UserLogin(int tries_)
 
 void DisplayAdminOptions()
 {
+    Student s;
+    CreateStudentList(&s);
 
     while (1)
     {
@@ -103,7 +105,7 @@ void DisplayAdminOptions()
                 break;
             case 1:
 
-
+                AddStudentRecord(&s);
 
                // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
@@ -111,16 +113,22 @@ void DisplayAdminOptions()
                 printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 3:
-                printf("stuff\n"); //waiting for admin methods to be implemented
+                
+                ViewStudentRecord(&s);
+               // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 4:
-                printf("stuff\n"); //waiting for admin methods to be implemented
+                
+                ViewAllRecords(&s);
+                //printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 5:
                 printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 6:
-                printf("stuff\n"); //waiting for admin methods to be implemented
+
+                EditStudentGrade(&s);
+            //    printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             default:
                 printf("Please enter a valid number\n");
