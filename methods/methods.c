@@ -150,7 +150,10 @@ void DisplayUserOptions()
     {
         int choice = 0;
         int flag = 0;
-        printf("\npress 0 to go back\n 1 to view your record \n 2 Edit your password \n 3 Edit your name\n");
+        printf("\npress 0 to go back\n
+               1 to view your record\n
+               2 Edit your password\n
+               3 Edit your name\n");
         scanf("%d",&choice);
         switch (choice)
         {
