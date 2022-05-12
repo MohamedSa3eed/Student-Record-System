@@ -7,11 +7,7 @@ int Mode()
 {
     while (1)
     {
-        printf("Welcome to SCS \n
-                --------------------------------------\n
-                Enter 0 for admin mode \n
-                Enter 1 for user mode \n"
-              );
+        printf("Welcome to SCS \n--------------------------------------\n 0 for admin mode \n 1 for user mode \n");
         int x ;
         scanf("%d",&x);
         if(x == 0 || x== 1)
@@ -28,25 +24,24 @@ int AdminLogin(int tries_)
 
     while(1)
     {
-        const char *correct_admin_password = "magicpassword"; //temp save
+        const char *saved_admin_password = "magicpassword"; //temp save
         char admin_password[20];
-        printf("Enter admin password: ");
-        scanf("%s",entered_admin_password);
+        printf("Please enter your password\n");
+        scanf("%s",admin_password);
 
-        int compare_password = strcmp(correct_admin_password,entered_admin_password);
+        int compare_password = strcmp(saved_admin_password,admin_password);
 
         if( compare_password == 0)
             break ;
         else
         {
-            printf("Invalid password.\n
-                    Try again.");
+            printf("The password is wrong\n");
             tries-- ;
         }
 
         if (!tries)
         {
-            printf("\nyou ran out of tries. Login failed.");
+            printf("\nyou ran out of tries");
             return 0 ;
         }
     }
@@ -65,9 +60,9 @@ int UserLogin(int tries_)
         const char *saved_user_password = "magicpassword"; //temp save
         char ID[20] ;
         char user_password[20];
-        printf("Enter you ID\n");
+        printf("Please enter you ID\n");
         scanf("%s",ID);
-        printf("Enter your password\n");
+        printf("Please enter your password\n");
         scanf("%s",user_password);
 
         int compare_ID = strcmp(saved_user_ID,saved_user_ID);
@@ -77,12 +72,12 @@ int UserLogin(int tries_)
             break ;
         else
         {
-            printf("The ID or the password is incorrect\n");
+            printf("The ID or the password are wrong\n");
             tries-- ;
         }
         if (!tries)
         {
-            printf("You ran out of tries. Login failed.");
+            printf("you ran out of tries");
             return 0 ;
         }
             }
@@ -99,13 +94,7 @@ void DisplayAdminOptions()
     {
         int choice = 0;
         int flag = 0;
-        printf("\npress 0 to go back\n
-                 1 to add student record\n
-                 2 Remove student record\n
-                 3 view student record\n
-                 4 view all records\n
-                 5 Edit admin password\n
-                 6 edit student grade\n");
+        printf("\npress 0 to go back\n 1 to add student record \n 2 Remove student record \n 3 view student record \n 4 view all records \n 5 Edit admin password \n 6 edit student grade \n");
         scanf("%d",&choice);
         switch (choice)
         {
