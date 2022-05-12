@@ -105,7 +105,7 @@ void DisplayAdminOptions()
             case 1:
 
 
-               
+
                // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 2:
