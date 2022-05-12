@@ -3,6 +3,7 @@
 #include "../user/user.h"
 #include"stdio.h"
 #include <string.h>
+
 int Mode()
 {
     while (1)
@@ -82,16 +83,16 @@ int UserLogin(int tries_)
         }
             }
 
-
-
     return 1;
         }
 
 
 void DisplayAdminOptions()
 {
+
     while (1)
     {
+
         int choice = 0;
         int flag = 0;
         printf("\npress 0 to go back\n 1 to add student record \n 2 Remove student record \n 3 view student record \n 4 view all records \n 5 Edit admin password \n 6 edit student grade \n");
@@ -102,6 +103,9 @@ void DisplayAdminOptions()
                 flag =1 ;
                 break;
             case 1:
+
+
+
                 printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 2:

@@ -16,7 +16,7 @@ while (1)
     {
 //        UserLogin();
 //        DisplayUserOptions();
-        if( UserLogin(TRIES_ADMIN)) //returns 0 to terminate if user fails to log in too many times
+        if( UserLogin(TRIES_USER)) //returns 0 to terminate if user fails to log in too many times
             {
             DisplayUserOptions();
             }
@@ -27,7 +27,7 @@ while (1)
     {
 //        AdminLogin();
 //        DisplayAdminOptions();
-        if( AdminLogin(TRIES_USER)) //returns 0 to terminate if admin fails to log in too many times
+        if( AdminLogin(TRIES_ADMIN)) //returns 0 to terminate if admin fails to log in too many times
             {
 
             DisplayAdminOptions();
