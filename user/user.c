@@ -5,9 +5,9 @@ void ViewRecord(Student * ps,int *pid)
 {
     while(1)
     {
-     int id,i,state=0;
-     printf("enter your id\n");
-     scanf("%d",&id);
+     int id=*pid,i,state=0;
+    // printf("enter your id\n");
+    // scanf("%d",&id);
      StudentNode * p = ps->top ;
      for (i=0;i<ps->numberOfStudents;i++)
         {
@@ -32,9 +32,9 @@ void EditPassword (Student* ps,int *pid)
 {
      while (1)
     {
-        int id,i,state = 0;
-        printf("enter your id\n");
-        scanf("%d",&id);
+        int id=*pid,i,state = 0;
+        // printf("enter your id\n");
+        //scanf("%d",&id);
         StudentNode *p = ps->top ;
         for (i=0;i<ps->numberOfStudents;i++)
         {
@@ -58,9 +58,9 @@ void EditName(Student* ps,int * pid)
 {
      while (1)
     {
-        int id,i,state = 0;
-        printf("enter your id\n");
-        scanf("%d",&id);
+        int id=*pid,i,state = 0;
+       // printf("enter your id\n");
+        //scanf("%d",&id);
         StudentNode *p = ps->top ;
         for (i=0;i<ps->numberOfStudents;i++)
         {
