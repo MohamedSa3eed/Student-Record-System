@@ -46,7 +46,7 @@ void ViewStudentRecord(Student *ps)
     {
         int flag = 0;
         int id ;
-        printf(" enter the student ID that you want to show\n");
+        printf("enter the student ID that you want to show\n");
         scanf("%d",&id);
         StudentNode *p = ps->top ;
         for (int i = 0 ; i < ps->numberOfStudents;i++ )
@@ -83,7 +83,7 @@ void EditStudentGrade(Student *ps)
     {
         int flag = 0;
         int id ;
-        printf(" enter the student ID that you want to edit\n");
+        printf("enter the student ID that you want to edit\n");
         scanf("%d",&id);
         StudentNode *p = ps->top ;
         for (int i = 0 ; i < ps->numberOfStudents;i++ )
@@ -104,23 +104,35 @@ void EditStudentGrade(Student *ps)
         break;
     }
 }
-/*
+
 void RemoveStudentRecord (Student *ps) 
 {
     // please handel wrong id 
+    printf("enter the student ID that you want to remove\n");
     int id ; 
-    scanf("%d",id);
+    scanf("%d",&id);
     StudentNode *p = ps->top ;
+    StudentNode *x = NULL ;
     int wanted ;
    for (int i = 0 ; i < ps->numberOfStudents;i++ )
     {
        if (id == p->id )
         {
+           x = p ;
            wanted = i ;
         }
         
         p = p ->next ;
     }
+    p = ps->top ;
+    for (int i = 0 ; i < wanted ;i++ )
+    {
+        if(i== wanted-1)
+        {
+            p->next = x->next ;
+            free(x);
+        }
+        p = p ->next ;
+    }
 
 }
-*/
