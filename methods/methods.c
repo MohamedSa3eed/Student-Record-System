@@ -125,7 +125,7 @@ void DisplayAdminOptions()
                 //printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 5:
-                EditAdminPassword();
+              //  EditAdminPassword();
                // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 6:
