@@ -50,43 +50,48 @@ int AdminLogin(int tries_,char * password)
 }
 
 
-int UserLogin(int tries_)
+int UserLogin(int tries_,int* pid,Student *s)
 {
     int tries = tries_;
-    while(1)
+    while(tries--)
     {
 
-        const char *saved_user_ID = "123"; //temp save
-        const char *saved_user_password = "magicpassword"; //temp save
-        char ID[20] ;
+        //const char *saved_user_ID = *pid;//"123"; //temp save
+        //const char *saved_user_password = "magicpassword"; //temp save
+        //char ID[20] ;
         char user_password[20];
         printf("Please enter you ID\n");
-        scanf("%s",ID);
+        scanf("%s",pid);
         printf("Please enter your password\n");
         scanf("%s",user_password);
-
-        int compare_ID = strcmp(saved_user_ID,saved_user_ID);
-        int compare_password = strcmp(saved_user_password,user_password);
-
-        if( compare_password == 0 && compare_ID == 0)
-            break ;
-        else
+        int found = user_found(s,pid,user_password);
+        if(found)
         {
-            printf("The ID or the password are wrong\n");
-            tries-- ;
-        }
-        if (!tries)
-        {
-            printf("you ran out of tries");
-            return 0 ;
-        }
-            }
-
-    return 1;
+            break;
         }
 
+        //int compare_ID = strcmp(saved_user_ID,saved_user_ID);
+      //  int compare_password = strcmp(saved_user_password,user_password);
 
-void DisplayAdminOptions(Student*s,char *password)
+        //if( compare_password == 0 && compare_ID == 1)
+       //     break ;
+       // else
+      //  {
+       //     printf("The ID or the password are wrong\n");
+       //     tries-- ;
+      //  }
+        //if (!tries)
+       // {
+        ///    printf("you ran out of tries");
+          //  return 0 ;
+       // }
+          //  }
+
+    //return 1;
+         }
+
+}
+void DisplayAdminOptions(Student*s,char* password)
 {
    // Student s;
    // CreateStudentList(&s);
@@ -146,7 +151,7 @@ void DisplayAdminOptions(Student*s,char *password)
     }
 }
 
-void DisplayUserOptions(Student*s)
+void DisplayUserOptions(Student*s,int* pid)
 {
   //  Student s;
   //  CreateStudentList(&s);
@@ -164,15 +169,15 @@ void DisplayUserOptions(Student*s)
                 flag =1;
                 break;
             case 1:
-                ViewRecord(s);
+                ViewRecord(s,pid);
                 //printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             case 2:
-                EditName(s);
+                EditName(s,pid);
                // printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             case 3:
-                EditPassword(s);
+                EditPassword(s,pid);
                // printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             default:
@@ -193,4 +198,19 @@ void CreateStudentList (Student *ps)
    ps->top=NULL ;
    ps->end=NULL ;
    ps->numberOfStudents =0 ;
+}
+int user_found(Student *ps,int *pid,char*pass)
+{
+    StudentNode *p = ps->top ;
+    for (int i = 0 ; i < ps->numberOfStudents;i++ )
+    {
+        const char *input = pass ;
+        const char *saved = p->password ;
+        if (*pid == p->id && !(strcmp(saved,input)))
+        {
+         return 1 ;
+        }
+        p = p ->next ;
+    } 
+    return 0; 
 }

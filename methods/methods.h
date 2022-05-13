@@ -5,9 +5,10 @@
 #define METHODS_H
 
 int  Mode();
-int  AdminLogin(int tries_,char *);
-int  UserLogin(int tries_);
-void DisplayUserOptions(Student*);
+int  AdminLogin(int ,char *);
+int  UserLogin(int , int*,Student *);
+void DisplayUserOptions(Student*,int*);
 void DisplayAdminOptions(Student*,char *);
 void CreateStudentList (Student *);
+int user_found(Student *,int *,char*)
 #endif

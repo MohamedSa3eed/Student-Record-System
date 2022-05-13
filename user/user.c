@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "user.h"
 //not tested yet
-void ViewRecord(Student * ps)
+void ViewRecord(Student * ps,int *pid)
 {
     while(1)
     {
@@ -28,7 +28,7 @@ void ViewRecord(Student * ps)
         break;
     }
 }
-void EditPassword (Student* ps)
+void EditPassword (Student* ps,int *pid)
 {
      while (1)
     {
@@ -54,7 +54,7 @@ void EditPassword (Student* ps)
     }
 }
 
-void EditName(Student* ps)
+void EditName(Student* ps,int * pid)
 {
      while (1)
     {

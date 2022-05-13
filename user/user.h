@@ -8,7 +8,7 @@ typedef struct StudentNode
    char name [50] ;
    int age ;
    char gender [10];
-   char password [10];
+   char password [20];
    int score ;
    struct StudentNode *next ;
 
@@ -22,8 +22,8 @@ typedef struct Student
    
 } Student ;
 
-void ViewRecord (Student *);
-void EditPassword (Student *) ;
-void EditName(Student *) ;
+void ViewRecord (Student *,int*);
+void EditPassword (Student *,int * ) ;
+void EditName(Student *,int *) ;
 
 #endif

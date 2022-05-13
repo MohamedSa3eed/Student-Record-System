@@ -11,6 +11,7 @@ int main ()
   //Student S ;
   Student s ;
   char adminPassword [20] = "magicpassword";
+  int id ;
   CreateStudentList(&s);
 while (1)
 {
@@ -19,9 +20,9 @@ while (1)
     {
 //        UserLogin();
 //        DisplayUserOptions();
-        if( UserLogin(TRIES_USER)) //returns 0 to terminate if user fails to log in too many times
+        if( UserLogin(TRIES_USER,&id,&s)) //returns 0 to terminate if user fails to log in too many times
             {
-            DisplayUserOptions(&s);
+            DisplayUserOptions(&s,&id);
             }
         else return 0;
 
