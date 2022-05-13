@@ -14,6 +14,7 @@ typedef struct StudentNode
 
 typedef struct Student 
 {
+   StudentNode *end ;
    int numberOfStudents ;
    StudentNode *top ;
    

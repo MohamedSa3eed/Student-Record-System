@@ -182,4 +182,6 @@ void DisplayUserOptions()
 void CreateStudentList (Student *ps)
 {
    ps->top=NULL ;
+   ps->end=NULL ;
+   ps->numberOfStudents =0 ;
 }
