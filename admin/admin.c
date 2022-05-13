@@ -15,6 +15,10 @@
         scanf("%d",&(p->id));
         printf("Type student name\n");
         scanf("%s",(p->name));
+        printf("Type student age\n");
+        scanf("%s",&(p->age));
+        printf("Type student gender\n");
+        scanf("%s",(p->gender));
         printf("Type student password\n");
         scanf("%s",(p->password));
         printf("Type student score\n");
@@ -31,7 +35,7 @@
              
          }
         ps->numberOfStudents ++;
-        printf("press 0 to go back\n press 1 to continue adding students \n");
+        printf("press 0 to go back\npress 1 to continue adding students \n");
         int choice = 0;
         scanf("%d",&choice);
         if(choice !=0) choice =1;
@@ -60,10 +64,10 @@ void ViewStudentRecord(Student *ps)
         }
         if(flag == 0)
         {
-            printf("there is no such ID\n please enter a valid one\n");
+            printf("there is no such ID\nplease enter a valid one\n");
             continue;
         }
-        printf("press 0 to go back\n press 1 to continue viewing students \n");
+        printf("press 0 to go back\npress 1 to continue viewing students \n");
         int choice = 0;
         scanf("%d",&choice);
         if(choice !=0) choice =1;
@@ -76,7 +80,7 @@ void ViewAllRecords(Student *ps)
     StudentNode *p = ps->top ;
     for (int i = 0 ; i < ps->numberOfStudents;i++ )
     {
-        printf("%d : \n",p->name);
+        printf("%s : ",p->name);
         printf("%d\n",p->score);
         p = p ->next ;
     }
@@ -103,10 +107,10 @@ void EditStudentGrade(Student *ps)
         }
         if(flag == 0)
         {
-            printf("there is no such ID\n please enter a valid one\n");
+            printf("there is no such ID\nplease enter a valid one\n");
             continue;
         }
-        printf("press 0 to go back\n press 1 to continue editing student records \n");
+        printf("press 0 to go back\npress 1 to continue editing student records \n");
         int choice = 0;
         scanf("%d",&choice);
         if(choice !=0) choice =1;
@@ -140,7 +144,7 @@ void RemoveStudentRecord (Student *ps)
         }
         if(flag == 0)
         {
-            printf("there is no such ID\n please enter a valid one\n");
+            printf("there is no such ID\nplease enter a valid one\n");
             continue;
         }
         p = ps->top ;
@@ -153,7 +157,7 @@ void RemoveStudentRecord (Student *ps)
             }
             p = p ->next ;
         }
-        printf("press 0 to go back\n press 1 to continue removing students \n");
+        printf("press 0 to go back\npress 1 to continue removing students \n");
         int choice = 0;
         scanf("%d",&choice);
         if(choice !=0) choice =1;

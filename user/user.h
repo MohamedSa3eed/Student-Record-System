@@ -6,6 +6,8 @@ typedef struct StudentNode
 {
    int id ;
    char name [50] ;
+   int age ;
+   char gender [10];
    char password [10];
    int score ;
    struct StudentNode *next ;
@@ -14,9 +16,9 @@ typedef struct StudentNode
 
 typedef struct Student 
 {
-   StudentNode *end ;
    int numberOfStudents ;
    StudentNode *top ;
+   StudentNode *end ;
    
 } Student ;
 
