@@ -7,7 +7,7 @@
 int  Mode();
 int  AdminLogin(int tries_);
 int  UserLogin(int tries_);
-void DisplayUserOptions();
-void DisplayAdminOptions();
+void DisplayUserOptions(Student*);
+void DisplayAdminOptions(Student*);
 void CreateStudentList (Student *);
 #endif

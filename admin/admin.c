@@ -154,6 +154,7 @@ void RemoveStudentRecord (Student *ps)
             {
                 p->next = x->next ;
                 free(x);
+                ps->numberOfStudents -- ;
             }
             p = p ->next ;
         }
@@ -164,4 +165,8 @@ void RemoveStudentRecord (Student *ps)
         if(!choice)break;
     }
 
+}
+void EditAdminPassword()
+{
+    
 }

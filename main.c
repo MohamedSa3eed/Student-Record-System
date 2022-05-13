@@ -9,7 +9,9 @@
 int main ()
 {
   //Student S ;
-  //CreateStudentList(&S);
+  Student s ;
+  char adminPassword [15] = "magicpassword";
+  CreateStudentList(&s);
 while (1)
 {
     int mode = Mode();
@@ -19,7 +21,7 @@ while (1)
 //        DisplayUserOptions();
         if( UserLogin(TRIES_USER)) //returns 0 to terminate if user fails to log in too many times
             {
-            DisplayUserOptions();
+            DisplayUserOptions(&s);
             }
         else return 0;
 
@@ -31,7 +33,7 @@ while (1)
         if( AdminLogin(TRIES_ADMIN)) //returns 0 to terminate if admin fails to log in too many times
             {
 
-            DisplayAdminOptions();
+            DisplayAdminOptions(&s);
             }
         else return 0;
 

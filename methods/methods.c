@@ -86,10 +86,10 @@ int UserLogin(int tries_)
         }
 
 
-void DisplayAdminOptions()
+void DisplayAdminOptions(Student*s)
 {
-    Student s;
-    CreateStudentList(&s);
+   // Student s;
+   // CreateStudentList(&s);
 
     while (1)
     {
@@ -105,32 +105,32 @@ void DisplayAdminOptions()
                 break;
             case 1:
 
-                AddStudentRecord(&s);
+                AddStudentRecord(s);
 
                // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 2:
                
-               RemoveStudentRecord(&s);
+               RemoveStudentRecord(s);
                // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 3:
                 
-                ViewStudentRecord(&s);
+                ViewStudentRecord(s);
                // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 4:
                 
-                ViewAllRecords(&s);
+                ViewAllRecords(s);
                 //printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 5:
-              //  EditAdminPassword();
+                EditAdminPassword();
                // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 6:
 
-                EditStudentGrade(&s);
+                EditStudentGrade(s);
             //    printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             default:
@@ -146,10 +146,10 @@ void DisplayAdminOptions()
     }
 }
 
-void DisplayUserOptions()
+void DisplayUserOptions(Student*s)
 {
-    Student s;
-    CreateStudentList(&s);
+  //  Student s;
+  //  CreateStudentList(&s);
 
 
     while (1)
@@ -164,15 +164,15 @@ void DisplayUserOptions()
                 flag =1;
                 break;
             case 1:
-                ViewRecord(&s);
+                ViewRecord(s);
                 //printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             case 2:
-                EditName(&s);
+                EditName(s);
                // printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             case 3:
-                EditPassword(&s);
+                EditPassword(s);
                // printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             default:
