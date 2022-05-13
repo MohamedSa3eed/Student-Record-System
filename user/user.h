@@ -20,8 +20,8 @@ typedef struct Student
    
 } Student ;
 
-void ViewRecord ();
-void EditPassword () ;
-void EditName() ;
+void ViewRecord (Student *);
+void EditPassword (Student *) ;
+void EditName(Student *) ;
 
 #endif
