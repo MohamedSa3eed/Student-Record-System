@@ -166,7 +166,9 @@ void RemoveStudentRecord (Student *ps)
     }
 
 }
-void EditAdminPassword()
+void EditAdminPassword(char * password)
 {
-    
+    printf ("enter the new password : \n ");
+    scanf("%s",password);
+
 }

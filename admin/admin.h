@@ -9,7 +9,7 @@ void AddStudentRecord (Student *) ; //done
 void RemoveStudentRecord (Student *) ; //done
 void ViewStudentRecord (Student *) ; //done
 void ViewAllRecords (Student *) ; //done
-void EditAdminPassword () ; //still 
+void EditAdminPassword (char*) ; //done
 void EditStudentGrade (Student *) ; //done 
 
 #endif

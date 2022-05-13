@@ -19,13 +19,13 @@ int Mode()
 
     }
 }
-int AdminLogin(int tries_)
+int AdminLogin(int tries_,char * password)
 {
     int tries = tries_;
 
     while(1)
     {
-        const char *saved_admin_password = "magicpassword"; //temp save
+        const char *saved_admin_password = password;//"magicpassword"; //temp save
         char admin_password[20];
         printf("Please enter your password\n");
         scanf("%s",admin_password);
@@ -86,7 +86,7 @@ int UserLogin(int tries_)
         }
 
 
-void DisplayAdminOptions(Student*s)
+void DisplayAdminOptions(Student*s,char *password)
 {
    // Student s;
    // CreateStudentList(&s);
@@ -125,7 +125,7 @@ void DisplayAdminOptions(Student*s)
                 //printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 5:
-                EditAdminPassword();
+                EditAdminPassword(password);
                // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 6:
