@@ -14,13 +14,22 @@
         printf("Type student ID\n");
         scanf("%d",&(p->id));
         printf("Type student name\n");
-        scanf("%s",&(p->name));
+        scanf("%s",(p->name));
         printf("Type student password\n");
-        scanf("%s",&(p->password));
+        scanf("%s",(p->password));
         printf("Type student score\n");
         scanf("%d",&(p->score));
-        p->next =ps->top ;
-        ps->top=p;
+        p->next = NULL ;
+        if (! ps-> numberOfStudents )
+         { 
+            ps->top=p;
+            ps->end=p;
+         }
+         else
+         {
+             ps->end->next=p ;
+             
+         }
         ps->numberOfStudents ++;
         printf("press 0 to go back\n press 1 to continue adding students \n");
         int choice = 0;
@@ -74,6 +83,7 @@ void EditStudentGrade(Student *ps)
     {
         int flag = 0;
         int id ;
+        printf(" enter the student ID that you want to edit\n");
         scanf("%d",&id);
         StudentNode *p = ps->top ;
         for (int i = 0 ; i < ps->numberOfStudents;i++ )
@@ -81,7 +91,8 @@ void EditStudentGrade(Student *ps)
             if (id == p->id )
             {
                 flag = 1;
-                scanf("%d",p->score);
+                printf("the new score is : ");
+                scanf("%d",&(p->score));
             }
             p = p ->next ;
         }
