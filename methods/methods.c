@@ -110,7 +110,9 @@ void DisplayAdminOptions()
                // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 2:
-                printf("stuff\n"); //waiting for admin methods to be implemented
+               
+               RemoveStudentRecord(&s);
+               // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 3:
                 
@@ -123,7 +125,8 @@ void DisplayAdminOptions()
                 //printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 5:
-                printf("stuff\n"); //waiting for admin methods to be implemented
+                EditAdminPassword();
+               // printf("stuff\n"); //waiting for admin methods to be implemented
                 break;
             case 6:
 
@@ -145,6 +148,9 @@ void DisplayAdminOptions()
 
 void DisplayUserOptions()
 {
+    Student s;
+    CreateStudentList(&s);
+
 
     while (1)
     {
@@ -158,13 +164,16 @@ void DisplayUserOptions()
                 flag =1;
                 break;
             case 1:
-                printf("stuff\n"); //waiting for user methods to be implemented
+                ViewRecord(&s);
+                //printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             case 2:
-                printf("stuff\n"); //waiting for user methods to be implemented
+                EditName(&s);
+               // printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             case 3:
-                printf("stuff\n"); //waiting for user methods to be implemented
+                EditPassword(&s);
+               // printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             default:
                 printf("Please enter a valid number\n");
