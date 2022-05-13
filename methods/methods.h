@@ -10,5 +10,5 @@ int  UserLogin(int , int*,Student *);
 void DisplayUserOptions(Student*,int*);
 void DisplayAdminOptions(Student*,char *);
 void CreateStudentList (Student *);
-int user_found(Student *,int *,char*)
+int user_found(Student *,int *,char *);
 #endif

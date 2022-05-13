@@ -61,7 +61,7 @@ int UserLogin(int tries_,int* pid,Student *s)
         //char ID[20] ;
         char user_password[20];
         printf("Please enter you ID\n");
-        scanf("%s",pid);
+        scanf("%d",pid);
         printf("Please enter your password\n");
         scanf("%s",user_password);
         int found = user_found(s,pid,user_password);
@@ -199,7 +199,7 @@ void CreateStudentList (Student *ps)
    ps->end=NULL ;
    ps->numberOfStudents =0 ;
 }
-int user_found(Student *ps,int *pid,char*pass)
+int user_found(Student *ps,int *pid,char *pass)
 {
     StudentNode *p = ps->top ;
     for (int i = 0 ; i < ps->numberOfStudents;i++ )
