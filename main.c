@@ -34,7 +34,6 @@ int main ()
             {
               DisplayUserOptions(&s,&id,adminPassword); // displays the option of the user mode
             }
-            storeList(&s,FILE_LOCATION,adminPassword);
       }
       else
       {
@@ -42,7 +41,6 @@ int main ()
               {
                 DisplayAdminOptions(&s,adminPassword); // displays the options of the admin mode
               }
-              storeList(&s,FILE_LOCATION,adminPassword);
       }
   }
   return 0;
