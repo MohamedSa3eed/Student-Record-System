@@ -3,7 +3,8 @@
 #include "../user/user.h"
 #ifndef METHODS_H
 #define METHODS_H
-
+StudentNode* studentFound(Student *,int *,int*);
+int askID();
 int  Mode();
 int  AdminLogin(int ,char *);
 int  UserLogin(int , int*,Student *);

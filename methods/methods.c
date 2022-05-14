@@ -7,12 +7,14 @@ StudentNode* studentFound(Student *ps,int *pid,int* pfoundcheck)
 {
     /* input : a pointer to the student ID entered by the user to search for its existence in the student list
      *         a pointer to the student list that contains all the students
-     * output: returns the student node if match found
-     *              or 0 if student does not exist
+     * output: returns the student node and checks pfoundcheck if match found
+     *              or the end node and unchecks pfoundcheck if student does not exist
     */
+   
     StudentNode *p = ps->top ;  // a student node pointing to the head of the list
     for (int i = 0 ; i < ps->numberOfStudents;i++ )  // iterating over each node to check for match
     {
+        ViewStudentRecord(p);
         if (*pid == p->id) // if the entered ID matches a saved ID and also the passwords match
         {
             *pfoundcheck = 1;
@@ -158,15 +160,15 @@ void DisplayAdminOptions(Student*s,char* password)
             case 0:
                 flag =1; 
                 break;
-            case 1:
+            case 1: // on adding a student, the id is required to check for duplicated before adding
                 id = askID();
                 foundcheck=0;
-                pstudent = studentFound(s,&id,&foundcheck);
+                pstudent = studentFound(s,&id,&foundcheck); // if the id already exists
                 if (foundcheck)
                 {
                     printf("ID exist. Try again with a new ID.\n-------------\n");
                 }
-                else{
+                else{   // if the id was new, then we continue to ask for the remaining information of the student then add the student
                         AddStudentRecord(s,id);
                 }
                 break;
@@ -223,7 +225,9 @@ void DisplayUserOptions(Student*s,int* pid)
     {
         int choice = 0; // user mode option choice
         int flag = 0;   // user mode logout flag
-        
+        int id;
+        int foundcheck;
+        StudentNode * pstudent;
         printf("\npress 0 to logout\n 1 to view your record \n 2 Edit your password \n 3 Edit your name\n");
         scanf("%d",&choice);
 
@@ -233,13 +237,40 @@ void DisplayUserOptions(Student*s,int* pid)
                 flag =1;
                 break;
             case 1:
-                ViewRecord(s,pid);
+                id = askID();
+                foundcheck=0;
+                pstudent = studentFound(s,&id,&foundcheck);
+                if (foundcheck)
+                {
+                    ViewRecord(pstudent);
+                }
+                else{
+                    printf("Student not found.\n----------------\n");
+                }
                 break;
             case 2:
-                EditPassword(s,pid);
+                id = askID();
+                foundcheck=0;
+                pstudent = studentFound(s,&id,&foundcheck);
+                if (foundcheck)
+                {
+                    EditPassword(pstudent);
+                }
+                else{
+                    printf("Student not found.\n----------------\n");
+                }
                 break;
             case 3:
-                EditName(s,pid);
+                id = askID();
+                foundcheck=0;
+                pstudent = studentFound(s,&id,&foundcheck);
+                if (foundcheck)
+                {
+                    EditName(pstudent);
+                }
+                else{
+                    printf("Student not found.\n----------------\n");
+                }
                 break;
             default:
                 printf("Please enter a valid number\n");

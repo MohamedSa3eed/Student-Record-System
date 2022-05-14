@@ -1,68 +1,19 @@
 #include <stdio.h>
 #include "user.h"
-//not tested yet
-void ViewRecord(Student * ps,int *pid)
+#include "../admin/admin.h"
+
+void ViewRecord(StudentNode * p)
 {
-     int id=*pid,i,state=0;
-    // printf("enter your id\n");
-    // scanf("%d",&id);
-     StudentNode * p = ps->top ;
-     for (i=0;i<ps->numberOfStudents;i++)
-        {
-            if (id == p->id )
-            {
-                state =1;
-                printf("name: %s\n",p->name);
-                printf("ID: %d\n",p->id);
-                printf("age: %d\n",p->age);
-                printf("score: %d\n",p->score);
-                printf("gender: %s\n",p->gender);
-
-
-            }
-            p=p->next ;
-        }
-
-
+    ViewStudentRecord(p);
 }
-void EditPassword (Student* ps,int *pid)
+void EditPassword (StudentNode* p)
 {
-
-        int id=*pid,i,state = 0;
-        // printf("enter your id\n");
-        //scanf("%d",&id);
-        StudentNode *p = ps->top ;
-        for (i=0;i<ps->numberOfStudents;i++)
-        {
-            if (id == p->id )
-            {
-                state= 1;
-                printf("enter the new password for ID %d:\n",id);
-                scanf("%s",p->password);
-            }
-            p=p->next ;
-        }
-
-
-
+    printf("enter the new password for ID %d:\n",p->id);
+    scanf("%s",p->password);
 }
 
-void EditName(Student* ps,int * pid)
+void EditName(StudentNode* p)
 {
-
-        int id=*pid,i,state = 0;
-       // printf("enter your id\n");
-        //scanf("%d",&id);
-        StudentNode *p = ps->top ;
-        for (i=0;i<ps->numberOfStudents;i++)
-        {
-            if (id == p->id )
-            {
-                state= 1;
-                printf("enter new name: \n");
-                scanf("%s",p->name);
-            }
-            p=p->next ;
-        }
-
+    printf("enter new name: \n");
+    scanf("%s",p->name);
 }

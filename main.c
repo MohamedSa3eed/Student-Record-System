@@ -11,7 +11,7 @@
 #define MAX_LINE_SIZE 250
 
 
-int AsInt(char buff[],int start,int size){
+int AsInt(char buff[],int start,int size){ // formating function
     int res=0;
     for (int i = start; i <start+size ; i++) {
         res+=(buff[i]-'0')*pow(10,size-(i-start)-1);
@@ -19,7 +19,10 @@ int AsInt(char buff[],int start,int size){
     return res;
 }
 
-void appendNode(Student* s,StudentNode *stud){
+void appendNode(Student* s,StudentNode *stud){////////////// BUGGY FIX THIS GUYS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  /* input : takes in a pointer to list of student and a pointer to a node
+   *         append the node to the list like in normal list operation
+  */
   if (s->numberOfStudents>=1)
   {
       s->end->next=stud;
@@ -36,27 +39,48 @@ void appendNode(Student* s,StudentNode *stud){
   }
 }
 void intiatlist(Student* s ,char* fileLocation ){
+  /*  Input : takes in a student list and a location of a file(in the form of a string)
+   *          opens the file and takes a line by line and format it into a student node
+   *
+   *  the file is arranged in a special format where the information of each student is on one line
+   *  and the first line in the file is an ID that has not been used before
+   *  the code takes the first line and puts it in the list variable nextID
+   *  As in the recommended next ID
+   */
     FILE* pdatabase = fopen(fileLocation,"r");
-    while (feof(pdatabase)==1)
+    char buff[MAX_LINE_SIZE];
+    fgets(buff,MAX_LINE_SIZE,pdatabase);
+    for (int i =0 ;!feof(pdatabase);i++)
     {
+      if (i==0)
+      {
+        s->nextID=AsInt(buff,0,8);                // code to handle the first line of the file
+        fgets(buff,MAX_LINE_SIZE,pdatabase);      // code to handle the first line of the file
+        continue;
+      }
       StudentNode stud;
-      char buff[MAX_LINE_SIZE];
-      fgets(buff,MAX_LINE_SIZE,pdatabase);
-      stud.id=AsInt(buff,4,8);
-      stud.age= AsInt(buff,19,3);
-      stud.gender= AsInt(buff,32,1)? "male": "female";
-      stud.score= AsInt(buff,48,3);
-      stud.password= &buff[63];
-      stud.passSize=strlen(stud.password);
-      stud.name= &buff[63+stud.passSize+9];
-      appendNode(s,&stud);
+      stud.id=AsInt(buff,4,8);                          // code to foramt the info from file
+      stud.age= AsInt(buff,19,3);                       // code to foramt the info from file
+      stud.gender= AsInt(buff,32,1)? "male": "female";  // code to foramt the info from file
+      stud.score= AsInt(buff,48,3);                     // code to foramt the info from file
+      stud.password= &buff[63];                         // code to foramt the info from file
+      stud.passSize=strlen(stud.password);              // code to foramt the info from file
+      stud.name= &buff[63+stud.passSize+9];             // code to foramt the info from file
+      appendNode(s,&stud);                              // code to foramt the info from file
+      fgets(buff,MAX_LINE_SIZE,pdatabase);              // code to foramt the info from file
     }
     fclose(pdatabase);
     
 }
 int storeList(Student *s , char* fileLocation){
+    /*
+     * Input : student list and a file location
+     * the function resets the content of the file by writing the first line as the recommended next ID
+     * the reopens the file in append binary mode. the nodes are then added one by one into the folder 
+     * with the specific format
+     */
     FILE *pdatabase;
-    pdatabase = fopen(fileLocation,"wb");
+    pdatabase = fopen(fileLocation,"w");
     fprintf(pdatabase,"");
     fclose(pdatabase);
     pdatabase = fopen(fileLocation,"ab");
@@ -77,9 +101,8 @@ int main ()
   CreateStudentList(&s);
   intiatlist(&s,FILE_LOCATION);
   // the default admin password
-  char adminPassword [20] = "magicpassword"; 
+  char adminPassword [20] = "ma"; 
   int id ;
-  CreateStudentList(&s);
   int mode = Mode();  // asks the program user to choose a mode from either admin mode or user mode
   if (mode==1)
   {
