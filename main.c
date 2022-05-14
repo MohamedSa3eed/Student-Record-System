@@ -8,60 +8,29 @@
 
 int main ()
 {
-  //Student S ;
-  Student s ;
-  char adminPassword [20] = "magicpassword";
+  // the full students list
+  Student s;
+  // the default admin password
+  char adminPassword [20] = "magicpassword"; 
   int id ;
   CreateStudentList(&s);
-while (1)
-{
-    int mode = Mode();
-    if (mode)
-    {
-//        UserLogin();
-//        DisplayUserOptions();
-        if( UserLogin(TRIES_USER,&id,&s)) //returns 0 to terminate if user fails to log in too many times
-            {
-            DisplayUserOptions(&s,&id);
-            }
-        else return 0;
-
-    }
-    else
-    {
-//        AdminLogin();
-//        DisplayAdminOptions();
-        if( AdminLogin(TRIES_ADMIN,adminPassword)) //returns 0 to terminate if admin fails to log in too many times
-            {
-
-            DisplayAdminOptions(&s,adminPassword);
-            }
-        else return 0;
-
-    }
-}
-
-
-
-
-  /*
-  ask user for user_name and password (3 tries) see help function :
-  */
-
-  /*
-   int tries =3 ;
-   whiel(1)
-   {
-       if(Login())
-         break ;
-       else
-         tries-- ;
-      if (!tries)
-      {
-        printf("you ran out of tries");
-        return 0 ;
-      } 
-   }
-   */
-    return 0;
+  int mode = Mode();  // asks the program user to choose a mode from either admin mode or user mode
+  if (mode==1)
+  {
+    if( UserLogin(TRIES_USER,&id,&s)==1) // gives the user 3 tries to enter a correct ID and password
+        {
+          DisplayUserOptions(&s,&id); // displays the option of the user mode
+        }
+    else // if the user fails to enter a correct ID and password before 3 tries the program will terminate
+        return 0;
+  }
+  else
+  {
+      if( AdminLogin(TRIES_ADMIN,adminPassword)==1) // gives the user 3 tries to enter the correct admin password
+          {
+            DisplayAdminOptions(&s,adminPassword); // displays the options of the admin mode
+          }
+      else  // if the user fails to enter the correct admin password before 3 tries the program will terminate
+          return 0; 
+  }
 }
