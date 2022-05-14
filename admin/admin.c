@@ -146,7 +146,7 @@ void RemoveStudentRecord (Student *ps)
             {
                 flag =1;
                 x = p ;
-                wanted = i ;
+                wanted = i+1 ;
             }
         
             p = p ->next ;
@@ -157,9 +157,9 @@ void RemoveStudentRecord (Student *ps)
             continue;
         }
         p = ps->top ;
-        for (int i = 1 ; i < wanted  ;i++ )
+        for (int i = 0 ; i < wanted  ;i++ )
         {
-            if(i== wanted)
+            if(i== wanted-1)
             {
                 if(ps->numberOfStudents == 1)
                 {
@@ -168,7 +168,7 @@ void RemoveStudentRecord (Student *ps)
                     free(x);
                     break;
                 }
-                if(i == 1)
+                if(i == 0)
                 {
                     ps->top = x->next;
                 } else
