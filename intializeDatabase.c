@@ -1,6 +1,6 @@
 #include <stdio.h>
 int main(){
-    FILE * pd =fopen("./STUDENTLIST.txt","wb");
+    FILE * pd =fopen("./STUDENTLIST","wb");
     fprintf(pd,"00000000ma%c\n",0);
     // fprintf(pd,"id: 00000001, age: 021, gender: 1, total grade: 100, password: magicpassword%c, name: Mohamed saed%c\n",0,0);
     // fprintf(pd,"id: 00000002, age: 020, gender: 0, total grade: 000, password: magicpass%c, name: asem ashraf%c\n",0,0);
