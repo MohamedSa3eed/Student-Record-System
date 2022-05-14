@@ -102,7 +102,7 @@ int main ()
   intiatlist(&s,FILE_LOCATION,adminPassword);
   //ViewAllRecords(&s);
   // the default admin password
-  printf("%s\n",adminPassword);
+  printf("The admin password : %s\n",adminPassword);
    
   int id ;
   while(1){
@@ -121,7 +121,7 @@ int main ()
                 DisplayAdminOptions(&s,adminPassword); // displays the options of the admin mode
               }
       }
-  storeList(&s,FILE_LOCATION,adminPassword);
+      storeList(&s,FILE_LOCATION,adminPassword);
   }
   return 0;
 }
