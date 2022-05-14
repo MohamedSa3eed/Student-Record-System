@@ -1,16 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
 #ifndef USER_H
 #define USER_H
 
-#pragma pack(1)
 typedef struct StudentNode
 {
-   int id ;
-   char name [50] ;
+   char *gender;
+   char *password;
+   char *name;
    int age ;
-   char gender [10];
-   char password [20];
    int score ;
+   int passSize;
+   int id ;
    struct StudentNode *next ;
 
 } StudentNode ;

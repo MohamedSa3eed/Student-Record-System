@@ -3,7 +3,33 @@
 #include "../user/user.h"
 #include"stdio.h"
 #include <string.h>
-
+StudentNode* studentFound(Student *ps,int *pid,int* pfoundcheck)
+{
+    /* input : a pointer to the student ID entered by the user to search for its existence in the student list
+     *         a pointer to the student list that contains all the students
+     * output: returns the student node if match found
+     *              or 0 if student does not exist
+    */
+    StudentNode *p = ps->top ;  // a student node pointing to the head of the list
+    for (int i = 0 ; i < ps->numberOfStudents;i++ )  // iterating over each node to check for match
+    {
+        if (*pid == p->id) // if the entered ID matches a saved ID and also the passwords match
+        {
+            *pfoundcheck = 1;
+            return p ;
+        }
+        else
+            p = p ->next ; // check the next student in the list
+    }
+    *pfoundcheck=0;
+    return p; // if match was not found in the list return 0
+}
+int askID(){
+    int id;
+    printf("  Enter student ID: ");
+    scanf("%d",&id);
+    return id;
+}
 int Mode()
 {
     /* return the program mode 
@@ -12,13 +38,14 @@ int Mode()
     */
     while (1)
     {
-        printf("Welcome to S.R.S. \n--------------------------------------\nAdmin mode : 0.\nUser mode : 1.\nExit : Ctrl C.");
+        printf("-----------------\nWelcome to S.R.S. \n-----------------\nAdmin mode : 0.\nUser mode  : 1.\nExit : Ctrl C.\n");
         int mode ;
+        printf("Mode: ");
         scanf("%d",&mode);
         if(mode == 0 || mode== 1)
         {
+            printf("-----------------\n");
             return mode ;
-
         } else printf("Enter a valid number(1 / 0).\n");
 
     }
@@ -35,17 +62,20 @@ int AdminLogin(int tries_,char * password)
     while(1)
     {
         const char *saved_admin_password = password; // "magicpassword" is the default password
-        char *admin_password;
-        printf("Please enter your password\n");
+        char admin_password[20];
+        printf("Enter Admin password\n");
         scanf("%s",admin_password);
 
         int compare_password = strcmp(saved_admin_password,admin_password);
 
-        if( compare_password==0) // if the entered password and the correct admin password match 
-            return 1;            // return 1
+        if( compare_password==0) 
+        {   // if the entered password and the correct admin password match
+            printf("Admin login successful.\n-----------------\n");
+            return 1;  // return 1
+        }           
         else                     // otherwise,
         {
-            printf("The password is wrong\n");  // print a password wrong statment
+            printf("Wrong Admin password.\n\n");  // print a password wrong statment
             tries-- ;                           // reduce the remaining tries
         }
 
@@ -116,21 +146,45 @@ void DisplayAdminOptions(Student*s,char* password)
     {
         int choice = 0; // admin option choice
         int flag = 0;  // admin logout flag
-        printf("\npress 0 to logout\n 1 to add student record \n 2 Remove student record \n 3 view student record \n 4 view all records \n 5 Edit admin password \n 6 edit student grade \n");
+        int id;
+        int foundcheck;
+        StudentNode * pstudent;
+        printf("0 to logout\n 1 to add student record \n 2 Remove student record \n 3 view student record \n 4 view all records \n 5 Edit admin password \n 6 edit student grade \n");
+        printf("Command no. : ");
         scanf("%d",&choice);
+        printf("-----------------\n");
         switch (choice)
         {
             case 0:
                 flag =1; 
                 break;
             case 1:
-                AddStudentRecord(s);
+                id = askID();
+                foundcheck=0;
+                pstudent = studentFound(s,&id,&foundcheck);
+                if (foundcheck)
+                {
+                    printf("ID exist. Try again with a new ID.\n-------------\n");
+                }
+                else{
+                        AddStudentRecord(s,id);
+                }
                 break;
             case 2:
-               RemoveStudentRecord(s);
+                RemoveStudentRecord(s);
                 break;
             case 3:
-                ViewStudentRecord(s);
+                id = askID();
+                foundcheck=0;
+                pstudent = studentFound(s,&id,&foundcheck);
+                if (foundcheck)
+                {
+                    ViewStudentRecord(pstudent);
+                }
+                else{
+                    printf("Student not found.\n----------------\n");
+                }
+                
                 break;
             case 4:
                 ViewAllRecords(s);
@@ -139,10 +193,20 @@ void DisplayAdminOptions(Student*s,char* password)
                 EditAdminPassword(password);
                 break;
             case 6:
-                EditStudentGrade(s);
+                id = askID();
+                foundcheck=0;
+                pstudent = studentFound(s,&id,&foundcheck);
+                if (foundcheck)
+                {
+                    EditStudentGrade(pstudent);
+                }
+                else{
+                    printf("Student not found.\n----------------\n");
+                }
+                
                 break;
             default:
-                printf("Invalid number. Enter 0 to exit admin mode\n");
+                printf("Invalid number. Enter 0 to exit admin mode.\n");
                 break;
         }
         if (flag == 1 )

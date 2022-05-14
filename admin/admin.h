@@ -4,12 +4,11 @@
 #define ADMIN_H
 
 //int adminPassword ;
-
-void AddStudentRecord (Student *) ; //done
+void AddStudentRecord (Student *,int) ; //done
 void RemoveStudentRecord (Student *) ; //done
-void ViewStudentRecord (Student *) ; //done
+void ViewStudentRecord (StudentNode *) ; //done
 void ViewAllRecords (Student *) ; //done
 void EditAdminPassword (char*) ; //done
-void EditStudentGrade (Student *) ; //done 
+void EditStudentGrade (StudentNode *) ; //done 
 
 #endif
