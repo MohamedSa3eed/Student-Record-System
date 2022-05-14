@@ -12,7 +12,7 @@ int Mode()
     */
     while (1)
     {
-        printf("Welcome to S.R.S. \n--------------------------------------\n Admin mode : 0.\nUser mode : 1.\nExit : Ctrl C.");
+        printf("Welcome to S.R.S. \n--------------------------------------\nAdmin mode : 0.\nUser mode : 1.\nExit : Ctrl C.");
         int mode ;
         scanf("%d",&mode);
         if(mode == 0 || mode== 1)
