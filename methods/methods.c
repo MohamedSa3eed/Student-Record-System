@@ -32,8 +32,9 @@ int AdminLogin(int tries_,char * password)
 
         int compare_password = strcmp(saved_admin_password,admin_password);
 
-        if( compare_password == 0)
-            break ;
+        if( !compare_password)
+            return 1;
+
         else
         {
             printf("The password is wrong\n");
@@ -46,7 +47,6 @@ int AdminLogin(int tries_,char * password)
             return 0 ;
         }
     }
-    return 1;
 }
 
 
@@ -67,9 +67,16 @@ int UserLogin(int tries_,int* pid,Student *s)
         int found = user_found(s,pid,user_password);
         if(found)
         {
-            break;
+            return 1;
+        } else
+        {
+            printf("invalid password or id.\n");
         }
-
+        if (!tries)
+        {
+            printf("\nyou ran out of tries");
+            return 0 ;
+        }
         //int compare_ID = strcmp(saved_user_ID,saved_user_ID);
       //  int compare_password = strcmp(saved_user_password,user_password);
 
@@ -90,6 +97,7 @@ int UserLogin(int tries_,int* pid,Student *s)
     //return 1;
          }
 
+
 }
 void DisplayAdminOptions(Student*s,char* password)
 {
@@ -101,7 +109,7 @@ void DisplayAdminOptions(Student*s,char* password)
 
         int choice = 0;
         int flag = 0;
-        printf("\npress 0 to go back\n 1 to add student record \n 2 Remove student record \n 3 view student record \n 4 view all records \n 5 Edit admin password \n 6 edit student grade \n");
+        printf("\npress 0 to logout\n 1 to add student record \n 2 Remove student record \n 3 view student record \n 4 view all records \n 5 Edit admin password \n 6 edit student grade \n");
         scanf("%d",&choice);
         switch (choice)
         {
@@ -161,7 +169,7 @@ void DisplayUserOptions(Student*s,int* pid)
     {
         int choice = 0;
         int flag = 0;
-        printf("\npress 0 to go back\n 1 to view your record \n 2 Edit your password \n 3 Edit your name\n");
+        printf("\npress 0 to logout\n 1 to view your record \n 2 Edit your password \n 3 Edit your name\n");
         scanf("%d",&choice);
         switch (choice)
         {
@@ -173,11 +181,13 @@ void DisplayUserOptions(Student*s,int* pid)
                 //printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             case 2:
-                EditName(s,pid);
+                EditPassword(s,pid);
+
                // printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             case 3:
-                EditPassword(s,pid);
+                EditName(s,pid);
+
                // printf("stuff\n"); //waiting for user methods to be implemented
                 break;
             default:

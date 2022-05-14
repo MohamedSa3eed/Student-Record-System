@@ -2,8 +2,8 @@
 #include "./admin/admin.h"
 #include "./user/user.h"
 #include "./methods/methods.h"
-#define TRIES_ADMIN 5
-#define TRIES_USER 5
+#define TRIES_ADMIN 3
+#define TRIES_USER 3
 
 
 int main ()

@@ -16,7 +16,7 @@
         printf("Type student name\n");
         scanf("%s",(p->name));
         printf("Type student age\n");
-        scanf("%s",&(p->age));
+        scanf("%d",&(p->age));
         printf("Type student gender\n");
         scanf("%s",(p->gender));
         printf("Type student password\n");
@@ -32,7 +32,7 @@
          else
          {
              ps->end->next=p ;
-             
+             ps->end = p;
          }
         ps->numberOfStudents ++;
         printf("press 0 to go back\npress 1 to continue adding students \n");
@@ -58,7 +58,12 @@ void ViewStudentRecord(Student *ps)
             if (id == p->id )
             {
                 flag =1;
-                printf("%d\n",p->score);
+                printf("name: %s\n",p->name);
+                printf("ID: %d\n",p->id);
+                printf("age: %d\n",p->age);
+                printf("score: %d\n",p->score);
+                printf("gender: %s\n",p->gender);
+
             }
             p = p ->next ;
         }
@@ -80,8 +85,12 @@ void ViewAllRecords(Student *ps)
     StudentNode *p = ps->top ;
     for (int i = 0 ; i < ps->numberOfStudents;i++ )
     {
-        printf("%s : ",p->name);
-        printf("%d\n",p->score);
+        printf("name: %s\n",p->name);
+        printf("ID: %d\n",p->id);
+        printf("age: %d\n",p->age);
+        printf("score: %d\n",p->score);
+        printf("gender: %s\n",p->gender);
+        printf("-------------------\n");
         p = p ->next ;
     }
 }
@@ -137,7 +146,7 @@ void RemoveStudentRecord (Student *ps)
             {
                 flag =1;
                 x = p ;
-                wanted = i ;
+                wanted = i+1 ;
             }
         
             p = p ->next ;
@@ -148,13 +157,25 @@ void RemoveStudentRecord (Student *ps)
             continue;
         }
         p = ps->top ;
-        for (int i = 0 ; i < wanted ;i++ )
+        for (int i = 0 ; i < wanted  ;i++ )
         {
             if(i== wanted-1)
             {
-                p->next = x->next ;
-                free(x);
-                ps->numberOfStudents -- ;
+                if(ps->numberOfStudents == 1)
+                {
+                    ps ->top = NULL;
+                    ps ->end = NULL;
+                    free(x);
+                    break;
+                }
+                if(i == 0)
+                {
+                    ps->top = x->next;
+                } else
+                { p->next = x->next ;}
+                    free(x);
+                    ps->numberOfStudents -- ;
+                    break;
             }
             p = p ->next ;
         }

@@ -3,8 +3,6 @@
 //not tested yet
 void ViewRecord(Student * ps,int *pid)
 {
-    while(1)
-    {
      int id=*pid,i,state=0;
     // printf("enter your id\n");
     // scanf("%d",&id);
@@ -14,24 +12,22 @@ void ViewRecord(Student * ps,int *pid)
             if (id == p->id )
             {
                 state =1;
-                printf("%s",p->name);
-                printf("%d",p->id);
-                printf("%d",p->score);
+                printf("name: %s\n",p->name);
+                printf("ID: %d\n",p->id);
+                printf("age: %d\n",p->age);
+                printf("score: %d\n",p->score);
+                printf("gender: %s\n",p->gender);
+
+
             }
             p=p->next ;
         }
-        if(state== 0)
-        {
-            printf("enter a valid id\n");
-            continue;
-        }
-        break;
-    }
+
+
 }
 void EditPassword (Student* ps,int *pid)
 {
-     while (1)
-    {
+
         int id=*pid,i,state = 0;
         // printf("enter your id\n");
         //scanf("%d",&id);
@@ -41,23 +37,19 @@ void EditPassword (Student* ps,int *pid)
             if (id == p->id )
             {
                 state= 1;
+                printf("enter the new password for ID %d:\n",id);
                 scanf("%s",p->password);
             }
             p=p->next ;
         }
-        if(state == 0)
-        {
-            printf("enter a valid id\n");
-            continue;
-        }
-        break;
-    }
+
+
+
 }
 
 void EditName(Student* ps,int * pid)
 {
-     while (1)
-    {
+
         int id=*pid,i,state = 0;
        // printf("enter your id\n");
         //scanf("%d",&id);
@@ -67,15 +59,10 @@ void EditName(Student* ps,int * pid)
             if (id == p->id )
             {
                 state= 1;
+                printf("enter new name: \n");
                 scanf("%s",p->name);
             }
             p=p->next ;
         }
-        if(state == 0)
-        {
-            printf("enter a valid id\n");
-            continue;
-        }
-        break;
-    }
+
 }
