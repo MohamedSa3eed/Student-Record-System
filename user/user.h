@@ -2,6 +2,7 @@
 #ifndef USER_H
 #define USER_H
 
+#pragma pack(1)
 typedef struct StudentNode
 {
    int id ;

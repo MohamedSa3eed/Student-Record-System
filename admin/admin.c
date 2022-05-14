@@ -2,44 +2,46 @@
 #include "admin.h"
 #include "../user/user.h"
 
-    // please someone do the UI for this :)
+// please someone do the UI for this :)
 
-    void AddStudentRecord (Student *ps)
+void AddStudentRecord(Student *ps)
 {
     while (1)
     {
         StudentNode *p;
-        p=(StudentNode*)malloc(sizeof (StudentNode));
+        p = (StudentNode *)malloc(sizeof(StudentNode));
         // please someone do the UI for this :)
         printf("Type student ID\n");
-        scanf("%d",&(p->id));
+        scanf("%d", &(p->id));
         printf("Type student name\n");
-        scanf("%s",(p->name));
+        scanf("%s", (p->name));
         printf("Type student age\n");
-        scanf("%d",&(p->age));
+        scanf("%d", &(p->age));
         printf("Type student gender\n");
-        scanf("%s",(p->gender));
+        scanf("%s", (p->gender));
         printf("Type student password\n");
-        scanf("%s",(p->password));
+        scanf("%s", (p->password));
         printf("Type student score\n");
-        scanf("%d",&(p->score));
-        p->next = NULL ;
-        if (! ps-> numberOfStudents )
-         { 
-            ps->top=p;
-            ps->end=p;
-         }
-         else
-         {
-             ps->end->next=p ;
-             ps->end = p;
-         }
-        ps->numberOfStudents ++;
+        scanf("%d", &(p->score));
+        p->next = NULL;
+        if (!ps->numberOfStudents)
+        {
+            ps->top = p;
+            ps->end = p;
+        }
+        else
+        {
+            ps->end->next = p;
+            ps->end = p;
+        }
+        ps->numberOfStudents++;
         printf("press 0 to go back\npress 1 to continue adding students \n");
         int choice = 0;
-        scanf("%d",&choice);
-        if(choice !=0) choice =1;
-        if(!choice)break;
+        scanf("%d", &choice);
+        if (choice != 0)
+            choice = 1;
+        if (!choice)
+            break;
     }
 }
 
@@ -49,49 +51,49 @@ void ViewStudentRecord(Student *ps)
     while (1)
     {
         int flag = 0;
-        int id ;
+        int id;
         printf("enter the student ID that you want to show\n");
-        scanf("%d",&id);
-        StudentNode *p = ps->top ;
-        for (int i = 0 ; i < ps->numberOfStudents;i++ )
+        scanf("%d", &id);
+        StudentNode *p = ps->top;
+        for (int i = 0; i < ps->numberOfStudents; i++)
         {
-            if (id == p->id )
+            if (id == p->id)
             {
-                flag =1;
-                printf("name: %s\n",p->name);
-                printf("ID: %d\n",p->id);
-                printf("age: %d\n",p->age);
-                printf("score: %d\n",p->score);
-                printf("gender: %s\n",p->gender);
-
+                flag = 1;
+                printf("name: %s\n", p->name);
+                printf("ID: %d\n", p->id);
+                printf("age: %d\n", p->age);
+                printf("score: %d\n", p->score);
+                printf("gender: %s\n", p->gender);
             }
-            p = p ->next ;
+            p = p->next;
         }
-        if(flag == 0)
+        if (flag == 0)
         {
             printf("there is no such ID\nplease enter a valid one\n");
             continue;
         }
         printf("press 0 to go back\npress 1 to continue viewing students \n");
         int choice = 0;
-        scanf("%d",&choice);
-        if(choice !=0) choice =1;
-        if(!choice)break;
-
+        scanf("%d", &choice);
+        if (choice != 0)
+            choice = 1;
+        if (!choice)
+            break;
     }
 }
 void ViewAllRecords(Student *ps)
 {
-    StudentNode *p = ps->top ;
-    for (int i = 0 ; i < ps->numberOfStudents;i++ )
+    StudentNode *p = ps->top;
+    for (int i = 0; i < ps->numberOfStudents; i++)
     {
-        printf("name: %s\n",p->name);
-        printf("ID: %d\n",p->id);
-        printf("age: %d\n",p->age);
-        printf("score: %d\n",p->score);
-        printf("gender: %s\n",p->gender);
+        printf("name: %s\n", p->name);
+        printf("ID: %d\n", p->id);
+        printf("age: %d\n", p->age);
+        printf("score: %d\n", p->score);
+        printf("gender: %s\n", p->gender);
         printf("-------------------\n");
-        p = p ->next ;
+        p = p->next;
     }
 }
 void EditStudentGrade(Student *ps)
@@ -100,96 +102,165 @@ void EditStudentGrade(Student *ps)
     while (1)
     {
         int flag = 0;
-        int id ;
+        int id;
         printf("enter the student ID that you want to edit\n");
-        scanf("%d",&id);
-        StudentNode *p = ps->top ;
-        for (int i = 0 ; i < ps->numberOfStudents;i++ )
+        scanf("%d", &id);
+        StudentNode *p = ps->top;
+        for (int i = 0; i < ps->numberOfStudents; i++)
         {
-            if (id == p->id )
+            if (id == p->id)
             {
                 flag = 1;
                 printf("the new score is : \n");
-                scanf("%d",&(p->score));
+                scanf("%d", &(p->score));
             }
-            p = p ->next ;
+            p = p->next;
         }
-        if(flag == 0)
+        if (flag == 0)
         {
             printf("there is no such ID\nplease enter a valid one\n");
             continue;
         }
         printf("press 0 to go back\npress 1 to continue editing student records \n");
         int choice = 0;
-        scanf("%d",&choice);
-        if(choice !=0) choice =1;
-        if(!choice)break;
+        scanf("%d", &choice);
+        if (choice != 0)
+            choice = 1;
+        if (!choice)
+            break;
     }
 }
 
-void RemoveStudentRecord (Student *ps) 
+void RemoveStudentRecord(Student *ps)
 {
     // please handel wrong id
-
-    while(1)
+    printf("Enter the ID of the student you want to remove: ");
+    int id;
+    scanf("%d", &id);
+    if (ps->numberOfStudents == 0) // code to handle the case where there is 0 nodes in the list
     {
-        int flag =0;
-        printf("enter the student ID that you want to remove\n");
-        int id ;
-        scanf("%d",&id);
-        StudentNode *p = ps->top ;
-        StudentNode *x = NULL ;
-        int wanted ;
-        for (int i = 0 ; i < ps->numberOfStudents;i++ )
+        printf("There isn't students in the list.\n");
+    }
+    else if (ps->numberOfStudents == 1) // code to handle the case where there is only one node in the list which is the head and tail of the list
+    {
+        if ()
         {
-            if (id == p->id )
+            
+            free(ps->top);
+            ps->top = NULL;
+            ps->end = NULL;
+            ps->numberOfStudents--;
+            printf("Student deleted successfully.\n");
+            printf("The student list is now empty.\n");
+            printf("-----------------------------\n");
+        }
+    }
+    else
+    { // code to handle if there is more than 1 node in the list
+        StudentNode *p = ps->top;
+        for (int i = 0; i < (ps->numberOfStudents) - 1; i++)
+        {
+            if ((i == 0) && (p->id == id)) // if we want to delete the haed node
             {
-                flag =1;
-                x = p ;
-                wanted = i+1 ;
+                free(ps->top);     // free the space of the unwanted node
+                ps->top = p->next; // the current node will point to the node after the node wanted to be deleted
+                ps->numberOfStudents--;
+                printf("Student deleted successfully.\n");
+                printf("-----------------------------\n");
+                break;
             }
-        
-            p = p ->next ;
-        }
-        if(flag == 0)
-        {
-            printf("there is no such ID\nplease enter a valid one\n");
-            continue;
-        }
-        p = ps->top ;
-        for (int i = 0 ; i < wanted  ;i++ )
-        {
-            if(i== wanted-1)
+            if (id == (p->next)->id) // if the next node is the node to be deleted
             {
-                if(ps->numberOfStudents == 1)
+                if (i == (ps->numberOfStudents) - 2)
                 {
-                    ps ->top = NULL;
-                    ps ->end = NULL;
-                    free(x);
+                    ps->end = p;    // the current node will point to the node after the node wanted to be deleted
+                    free(p->next);  // free the space of the unwanted node
+                    p->next = NULL; // assgin the deleted node pointer to null
+                    ps->numberOfStudents--;
+                    printf("Student deleted successfully.\n");
+                    printf("-----------------------------\n");
                     break;
                 }
-                if(i == 0)
-                {
-                    ps->top = x->next;
-                } else
-                { p->next = x->next ;}
-                    free(x);
-                    ps->numberOfStudents -- ;
-                    break;
+                StudentNode *ptemp = p->next->next;
+                free(p->next);
+                p->next = (ptemp); // the current node will point to the node after the node wanted to be deleted
+                                   // free the space of the unwanted node
+                // p->next=NULL;   // assgin the deleted node pointer to null
+                ps->numberOfStudents--;
+                printf("Student deleted successfully.\n");
+                printf("-----------------------------\n");
+                break;
             }
-            p = p ->next ;
+            else
+                p = p->next;
+
+            if (i == (ps->numberOfStudents) - 2)
+            {
+                printf("Student not found.\n");
+                printf("------------------\n");
+            }
         }
-        printf("press 0 to go back\npress 1 to continue removing students \n");
-        int choice = 0;
-        scanf("%d",&choice);
-        if(choice !=0) choice =1;
-        if(!choice)break;
     }
-
 }
-void EditAdminPassword(char * password)
-{
-    printf ("enter the new password : \n ");
-    scanf("%s",password);
 
+//     while(1)
+//     {
+//         int flag =0;
+//         printf("enter the student ID that you want to remove\n");
+//         int id ;
+//         scanf("%d",&id);
+//         StudentNode *p = ps->top ;
+//         StudentNode *x = NULL ;
+//         int wanted ;
+//         for (int i = 0 ; i < ps->numberOfStudents;i++ )
+//         {
+//             if (id == p->id )
+//             {
+//                 flag =1;
+//                 x = p ;
+//                 wanted = i+1 ;
+//             }
+
+//             p = p ->next ;
+//         }
+//         if(flag == 0)
+//         {
+//             printf("there is no such ID\nplease enter a valid one\n");
+//             continue;
+//         }
+//         p = ps->top ;
+//         for (int i = 0 ; i < wanted  ;i++ )
+//         {
+//             if(i== wanted-1)
+//             {
+//                 if(ps->numberOfStudents == 1)
+//                 {
+//                     ps ->top = NULL;
+//                     ps ->end = NULL;
+//                     free(x);
+//                     break;
+//                 }
+//                 if(i == 0)
+//                 {
+//                     ps->top = x->next;
+//                 } else
+//                 { p->next = x->next ;}
+//                     free(x);
+//                     ps->numberOfStudents -- ;
+//                     break;
+//             }
+//             p = p ->next ;
+//         }
+//         printf("press 0 to go back\npress 1 to continue removing students \n");
+//         int choice = 0;
+//         scanf("%d",&choice);
+//         if(choice !=0) choice =1;
+//         if(!choice)break;
+//     }
+//
+//}
+void EditAdminPassword(char *password)
+{
+    printf("enter the new password : \n ");
+    scanf("%s", password);
 }
