@@ -108,6 +108,8 @@ int main ()
   int id ;
   while(1){
       int mode = Mode();  // asks the program user to choose a mode from either admin mode or user mode
+      CreateStudentList(&s);
+      intiatlist(&s,FILE_LOCATION,adminPassword);
       if (mode==1)
       {
         if( UserLogin(TRIES_USER,&id,&s)==1) // gives the user 3 tries to enter a correct ID and password
