@@ -14,7 +14,7 @@ StudentNode* studentFound(Student *ps,int *pid,int* pfoundcheck)
     StudentNode *p = ps->top ;  // a student node pointing to the head of the list
     for (int i = 0 ; i < ps->numberOfStudents;i++ )  // iterating over each node to check for match
     {
-        ViewStudentRecord(p);
+        //ViewStudentRecord(p);
         if (*pid == p->id) // if the entered ID matches a saved ID and also the passwords match
         {
             *pfoundcheck = 1;
@@ -31,6 +31,26 @@ int askID(){
     printf("  Enter student ID: ");
     scanf("%d",&id);
     return id;
+}
+void AddStudentRecordV2(Student*s){
+    printf("note: ID %d has not been used before.\n",s->nextID);
+    int id =askID();
+    StudentNode* pstudent;
+    int foundcheck=0;
+    if (id < s->nextID)
+    {
+        pstudent = studentFound(s,&id,&foundcheck); // if the id already exists
+        if (foundcheck)
+        {
+            printf("ID exist. Try again with a new ID.\n-------------\n");
+        }
+        else{
+            AddStudentRecord(s,id);
+        }
+    }else{
+        s->nextID=id+1;
+        AddStudentRecord(s,id);
+    }
 }
 int Mode()
 {
@@ -83,7 +103,7 @@ int AdminLogin(int tries_,char * password)
 
         if (tries==0)  // if the user ran out of tries         
         {
-            printf("\nyou ran out of tries");  
+            printf("\nyou ran out of tries\n");  
             return 0 ; // program terminates
         }
     }
@@ -101,6 +121,12 @@ int UserLogin(int tries_,int* pid,Student *s)
     int tries = tries_;  // number of tries of the user login
     while(tries--)
     {
+        if (s->numberOfStudents==0)
+        {
+            printf("The list is empty. Add students in admin mode.\n");
+            break;
+        }
+        
         char *user_password;
         printf("Please enter you ID\n");
         scanf("%d",pid);
@@ -116,7 +142,7 @@ int UserLogin(int tries_,int* pid,Student *s)
         }
         if (tries==0)
         {
-            printf("\nyou ran out of tries");
+            printf("\nyou ran out of tries\n");
             return 0 ;
         }
     }
@@ -161,16 +187,8 @@ void DisplayAdminOptions(Student*s,char* password)
                 flag =1; 
                 break;
             case 1: // on adding a student, the id is required to check for duplicated before adding
-                id = askID();
-                foundcheck=0;
-                pstudent = studentFound(s,&id,&foundcheck); // if the id already exists
-                if (foundcheck)
-                {
-                    printf("ID exist. Try again with a new ID.\n-------------\n");
-                }
-                else{   // if the id was new, then we continue to ask for the remaining information of the student then add the student
-                        AddStudentRecord(s,id);
-                }
+                AddStudentRecordV2(s);
+                //AddStudentRecord(id);
                 break;
             case 2:
                 RemoveStudentRecord(s);
@@ -237,7 +255,7 @@ void DisplayUserOptions(Student*s,int* pid)
                 flag =1;
                 break;
             case 1:
-                id = askID();
+                id = *pid;
                 foundcheck=0;
                 pstudent = studentFound(s,&id,&foundcheck);
                 if (foundcheck)
@@ -249,7 +267,7 @@ void DisplayUserOptions(Student*s,int* pid)
                 }
                 break;
             case 2:
-                id = askID();
+                id = *pid;
                 foundcheck=0;
                 pstudent = studentFound(s,&id,&foundcheck);
                 if (foundcheck)
@@ -261,7 +279,7 @@ void DisplayUserOptions(Student*s,int* pid)
                 }
                 break;
             case 3:
-                id = askID();
+                id = *pid;
                 foundcheck=0;
                 pstudent = studentFound(s,&id,&foundcheck);
                 if (foundcheck)
