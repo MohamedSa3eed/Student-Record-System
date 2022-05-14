@@ -10,16 +10,16 @@ void AddStudentRecord(Student *ps,int id_)
     p=(StudentNode*)malloc(sizeof(StudentNode));
     printf("Adding new student. ID : %d\n",id_);
     p->id=id_;
-    printf("  Enter student age: ");
-    scanf("%d", &(p->age));
+    printf("  Enter student name: ");
+    scanf("%s",p->name);
     printf("  Enter student score: ");
     scanf("%d", &(p->score));
-    printf("  Enter student name: ");
-    scanf("%s", (p->name));
-    printf("  Enter student gender: ");
-    scanf("%s", (p->gender));
     printf("  Enter student password: ");
-    scanf("%s", (p->password));
+    scanf("%s",p->password);
+    printf("  Enter student age: ");
+    scanf("%d", &(p->age));
+    printf("  Enter student gender: ");
+    scanf("%s",p->gender);
     
     p->next = NULL;
     if (ps->numberOfStudents==0)

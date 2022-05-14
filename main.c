@@ -98,7 +98,7 @@ int main ()
 {
   // the full students list
   Student s;
-  CreateStudentList(s);
+  CreateStudentList(&s);
   char adminPassword [50];
   intiatlist(&s,FILE_LOCATION,adminPassword);
   //ViewAllRecords(&s);
@@ -114,6 +114,7 @@ int main ()
             {
               DisplayUserOptions(&s,&id); // displays the option of the user mode
             }
+            storeList(&s,FILE_LOCATION,adminPassword);
       }
       else
       {
@@ -121,8 +122,8 @@ int main ()
               {
                 DisplayAdminOptions(&s,adminPassword); // displays the options of the admin mode
               }
+              storeList(&s,FILE_LOCATION,adminPassword);
       }
-      storeList(&s,FILE_LOCATION,adminPassword);
   }
   return 0;
 }
