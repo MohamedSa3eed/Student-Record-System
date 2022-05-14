@@ -19,7 +19,7 @@ int AsInt(char buff[],int start,int size){ // formating function
     return res;
 }
 
-void appendNode(Student *s,StudentNode *stud){////////////// BUGGY FIX THIS GUYS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+void appendNode(Student *s,StudentNode *stud){
   /* input : takes in a pointer to list of student and a pointer to a node
    *         append the node to the list like in normal list operation
   */
