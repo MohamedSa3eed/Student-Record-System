@@ -143,9 +143,8 @@ void RemoveStudentRecord(Student *ps)
     }
     else if (ps->numberOfStudents == 1) // code to handle the case where there is only one node in the list which is the head and tail of the list
     {
-        if ()
+        if (id==ps->top->id)
         {
-            
             free(ps->top);
             ps->top = NULL;
             ps->end = NULL;
@@ -153,6 +152,10 @@ void RemoveStudentRecord(Student *ps)
             printf("Student deleted successfully.\n");
             printf("The student list is now empty.\n");
             printf("-----------------------------\n");
+        }
+        else{
+            printf("Student not found.\n");
+            printf("------------------\n");
         }
     }
     else
