@@ -97,7 +97,8 @@ int storeList(Student *s , char* fileLocation,char* password){
 int main ()
 {
   // the full students list
-  Student s={0,NULL,NULL,0};
+  Student s;
+  CreateStudentList(s);
   char adminPassword [50];
   intiatlist(&s,FILE_LOCATION,adminPassword);
   //ViewAllRecords(&s);
