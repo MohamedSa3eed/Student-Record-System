@@ -11,9 +11,9 @@ typedef struct StudentNode
    int score ;
    int passSize;
    int id ;
+   char name[100];
    char gender[10];
    char password[100];
-   char name[100];
    struct StudentNode *next ;
 
 } StudentNode ;

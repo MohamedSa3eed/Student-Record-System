@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "admin.h"
 #include "../user/user.h"
 
@@ -7,20 +8,33 @@
 void AddStudentRecord(Student *ps,int id_)
 {
     StudentNode *p;
+    char* tmp;
     p=(StudentNode*)malloc(sizeof(StudentNode));
     printf("Adding new student. ID : %d\n",id_);
     p->id=id_;
-    printf("  Enter student name: ");
-    scanf("%s",p->name);
-    printf("  Enter student score: ");
-    scanf("%d", &(p->score));
-    printf("  Enter student password: ");
-    scanf("%s",p->password);
+    // char *name=p->name;
+    // char *password=p->password;
+    // char *gender=p->gender;
+    gets(tmp);
+    printf("  Enter student name:");
+    gets(p->name);
+    printf("  Enter student password:");
+    gets(p->password);
+    printf("  Enter student gender:");
+    gets(p->gender);
     printf("  Enter student age: ");
     scanf("%d", &(p->age));
-    printf("  Enter student gender: ");
-    scanf("%s",p->gender);
+    xxx:
+    printf("  Enter student score(0/100): ");
+    scanf("%d", &(p->score));
+    if (p->score<0||p->score>100)
+    {
+        goto xxx;
+    }
     
+    // strcpy(p->gender,gender);
+    // strcpy(p->name,name);
+    // strcpy(p->password,password);
     p->next = NULL;
     if (ps->numberOfStudents==0)
     {

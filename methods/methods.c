@@ -121,7 +121,8 @@ StudentNode* studentFound(Student *ps,int *pid,int* pfoundcheck)
 }
 int askID(){
     int id;
-    printf("  Enter student ID: ");
+    char* tmp;
+    printf("  Enter student ID:");
     scanf("%d",&id);
     return id;
 }
