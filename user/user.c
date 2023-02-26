@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "user.h"
+
 #include "../admin/admin.h"
 
 void ViewRecord(StudentNode * p) {
@@ -13,4 +14,5 @@ void EditPassword (StudentNode* p) {
 void EditName(StudentNode* p) {
     printf("enter new name: \n");
     scanf("%s",p->name);
+
 }

@@ -62,10 +62,12 @@ void intiatlist(Student* s ,char* fileLocation ,char* password){
         stud->next=NULL;
         appendNode(s,stud);                              // code to foramt the info from file
         fgets(buff,MAX_LINE_SIZE,pdatabase);              // code to foramt the info from file
+
     }
     fclose(pdatabase);
     printf("List intialized.\n------------------\n");
 }
+
 int storeList(Student *s , char* fileLocation,char* password){
     /*
      * Input : student list and a file location
@@ -167,6 +169,7 @@ int AdminLogin(int tries_,char * password) {
     int tries = tries_;
     while(1) {
         const char *saved_admin_password = password; // "magicpassword" is the default password
+
         char admin_password[20];
         printf("Enter Admin password\n");
         scanf("%s",admin_password);
@@ -249,6 +252,7 @@ void DisplayAdminOptions(Student*s,char* password) {
             case 0:
                 flag =1; 
                 break;
+
             case 1: // on adding a student, the id is required to check for duplicated before adding
                 AddStudentRecordV2(s);
                 //AddStudentRecord(id);
@@ -308,6 +312,7 @@ void DisplayUserOptions(Student*s,int* pid,char* password) {
         int foundcheck;
         StudentNode * pstudent;
         printf("\npress 0 to logout\n 1 to view your record \n 2 Edit your password \n 3 Edit your name\n4 Exit program.\n");
+
         scanf("%d",&choice);
         switch (choice) {
             case 0:

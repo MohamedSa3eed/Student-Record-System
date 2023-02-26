@@ -4,7 +4,6 @@
 #include "admin.h"
 #include "../user/user.h"
 
-
 void AddStudentRecord(Student *ps,int id_) {
     StudentNode *p;
     char* tmp;
