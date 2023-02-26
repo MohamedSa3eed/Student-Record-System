@@ -1,4 +1,3 @@
-
 #include "../admin/admin.h"
 #include "../user/user.h"
 #ifndef METHODS_H
