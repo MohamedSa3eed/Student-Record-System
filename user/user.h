@@ -1,25 +1,29 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #ifndef USER_H
 #define USER_H
 
-typedef struct StudentNode {
-   int                  id;
-   int                  age;
-   int                  score;
-   char                 name[50];
-   char                 gender[10];
-   char                 password[20];
-   struct StudentNode*  next ;
-} StudentNode ;
+typedef struct StudentNode{
+   unsigned int        age;
+   unsigned int        score;
+   unsigned int        passSize;
+   unsigned int        id;
+   char                name[100];
+   char                gender[10];
+   char                password[100];
+   struct StudentNode* next;
+}StudentNode;
 
-typedef struct Student {
-   int            numberOfStudents ;
-   StudentNode*   top ;
-   StudentNode*   end ;
+typedef struct Student{
+   unsigned int   numberOfStudents;
+   unsigned int   nextID;
+   StudentNode*   top;
+   StudentNode*   end;
 } Student;
 
-void ViewRecord (Student *,int*);
-void EditPassword (Student *,int * ) ;
-void EditName(Student *,int *) ;
+void ViewRecord      (StudentNode *);
+void EditPassword    (StudentNode *);
+void EditName        (StudentNode *);
 
 #endif

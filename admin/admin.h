@@ -3,11 +3,11 @@
 #ifndef ADMIN_H
 #define ADMIN_H
 
-void AddStudentRecord (Student *) ; //done
-void RemoveStudentRecord (Student *) ; //done
-void ViewStudentRecord (Student *) ; //done
-void ViewAllRecords (Student *) ; //done
-void EditAdminPassword (char*) ; //done
-void EditStudentGrade (Student *) ; //done 
+void AddStudentRecord     (Student *,int);
+void RemoveStudentRecord  (Student *);
+void ViewStudentRecord    (StudentNode *);
+void ViewAllRecords       (Student *);
+void EditAdminPassword    (char*);
+void EditStudentGrade     (StudentNode *);
 
 #endif
