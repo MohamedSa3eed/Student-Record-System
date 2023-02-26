@@ -5,16 +5,12 @@
 #include "../user/user.h"
 
 
-void AddStudentRecord(Student *ps,int id_)
-{
+void AddStudentRecord(Student *ps,int id_) {
     StudentNode *p;
     char* tmp;
     p=(StudentNode*)malloc(sizeof(StudentNode));
     printf("Adding new student. ID : %d\n",id_);
     p->id=id_;
-    // char *name=p->name;
-    // char *password=p->password;
-    // char *gender=p->gender;
     gets(tmp);
     printf("  Enter student name:");
     gets(p->name);
@@ -24,36 +20,27 @@ void AddStudentRecord(Student *ps,int id_)
     gets(p->gender);
     printf("  Enter student age: ");
     scanf("%d", &(p->age));
-    xxx:
+xxx:
     printf("  Enter student score(0/100): ");
     scanf("%d", &(p->score));
-    if (p->score<0||p->score>100)
-    {
+    if (p->score<0||p->score>100) {
         goto xxx;
     }
-    
-    // strcpy(p->gender,gender);
-    // strcpy(p->name,name);
-    // strcpy(p->password,password);
     p->next = NULL;
-    if (ps->numberOfStudents==0)
-    {
+    if (ps->numberOfStudents==0) {
         ps->top = p;
         ps->end = p;
     }
-    else
-    {
+    else {
         ps->end->next = p;
         ps->end = p;
     }
     ps->numberOfStudents++;
     printf("Student added.\n");
     printf("---------------------------\n");
-    
 }
 
-void ViewStudentRecord(StudentNode *p)
-{
+void ViewStudentRecord(StudentNode *p) {
     printf("  ID: %d\n", p->id);
     printf("  name: %s\n", p->name);
     printf("  age: %d\n", p->age);
@@ -61,36 +48,28 @@ void ViewStudentRecord(StudentNode *p)
     printf("  gender: %s\n", p->gender);
     printf("-------------------\n");
 }
-void ViewAllRecords(Student *ps)
-{
+void ViewAllRecords(Student *ps) {
     StudentNode *p = ps->top;
-    for (int i = 0; i < ps->numberOfStudents; i++)
-    {
+    for (int i = 0; i < ps->numberOfStudents; i++) {
         ViewStudentRecord(p);
         p = p->next;
     }
 }
-void EditStudentGrade(StudentNode *p)
-{
+void EditStudentGrade(StudentNode *p) {
     printf("the new score is : \n");
     scanf("%d", &(p->score));
 }
 
-void RemoveStudentRecord(Student *ps)
-{
-    // please handel wrong id
+void RemoveStudentRecord(Student *ps) {
     printf("Enter the ID of the student you want to remove: ");
     int id;
     scanf("%d", &id);
-    if (ps->numberOfStudents == 0) // code to handle the case where there is 0 nodes in the list
-    {
+    if (ps->numberOfStudents == 0){ // code to handle the case where there is 0 nodes in the list 
         printf("There isn't students in the list.\n");
         printf("-----------------------------\n");
     }
-    else if (ps->numberOfStudents == 1) // code to handle the case where there is only one node in the list which is the head and tail of the list
-    {
-        if (id==ps->top->id)
-        {
+    else if (ps->numberOfStudents == 1){ // code to handle the case where there is only one node in the list which is the head and tail of the list
+        if (id==ps->top->id) {
             free(ps->top);
             ps->top = NULL;
             ps->end = NULL;
@@ -104,13 +83,10 @@ void RemoveStudentRecord(Student *ps)
             printf("------------------\n");
         }
     }
-    else
-    { // code to handle if there is more than 1 node in the list
+    else { // code to handle if there is more than 1 node in the list
         StudentNode *p = ps->top;
-        for (int i = 0; i < (ps->numberOfStudents) - 1; i++)
-        {
-            if ((i == 0) && (p->id == id)) // if we want to delete the haed node
-            {
+        for (int i = 0; i < (ps->numberOfStudents) - 1; i++) {
+            if ((i == 0) && (p->id == id)) {// if we want to delete the haed node
                 free(ps->top);     // free the space of the unwanted node
                 ps->top = p->next; // the current node will point to the node after the node wanted to be deleted
                 ps->numberOfStudents--;
@@ -118,10 +94,8 @@ void RemoveStudentRecord(Student *ps)
                 printf("-----------------------------\n");
                 break;
             }
-            if (id == (p->next)->id) // if the next node is the node to be deleted
-            {
-                if (i == (ps->numberOfStudents) - 2)
-                {
+            if (id == (p->next)->id) {// if the next node is the node to be deleted
+                if (i == (ps->numberOfStudents) - 2) {
                     ps->end = p;    // the current node will point to the node after the node wanted to be deleted
                     free(p->next);  // free the space of the unwanted node
                     p->next = NULL; // assgin the deleted node pointer to null
@@ -133,18 +107,16 @@ void RemoveStudentRecord(Student *ps)
                 StudentNode *ptemp = p->next->next;
                 free(p->next);
                 p->next = (ptemp); // the current node will point to the node after the node wanted to be deleted
-                                   // free the space of the unwanted node
+                // free the space of the unwanted node
                 // p->next=NULL;   // assgin the deleted node pointer to null
                 ps->numberOfStudents--;
                 printf("Student deleted successfully.\n");
                 printf("-----------------------------\n");
                 break;
             }
-            else
-                p = p->next;
+            else p = p->next;
 
-            if (i == (ps->numberOfStudents) - 2)
-            {
+            if (i == (ps->numberOfStudents) - 2) {
                 printf("Student not found.\n");
                 printf("------------------\n");
             }
@@ -152,8 +124,7 @@ void RemoveStudentRecord(Student *ps)
     }
 }
 
-void EditAdminPassword(char *password)
-{
+void EditAdminPassword(char *password) {
     printf("enter the new password : ");
     scanf("%s", password);
 }
